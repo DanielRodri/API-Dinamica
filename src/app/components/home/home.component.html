@@ -9,8 +9,8 @@
       </div>
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
         <form>
-          <div class="form-row">      
-            <button type="submit" class="btn btn-lg btn-primary" style="margin-left: auto; margin-right: auto;" routerLink="/register" routerLinkActive="router-link-active" >Register Now!</button>          
+          <div  class="form-row">      
+            <button *ngIf="!(authenticationService.userData | async)" type="submit" class="btn btn-lg btn-primary" style="margin-left: auto; margin-right: auto;" routerLink="/register" routerLinkActive="router-link-active" >Register Now!</button>          
           </div>
         </form>
       </div>

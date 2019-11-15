@@ -1,7 +1,28 @@
-<nav class="navbar navbar-dark bg-dark static-top">
-    <div class="container">
-      <a class="navbar-brand" href="#" routerLink="/" routerLinkActive="router-link-active">API DYNAMIC</a>
-      <a class="btn btn-primary" href="#" routerLink="/login" routerLinkActive="router-link-active">Sign In</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand"  routerLink="/">API DYNAMIC</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul  class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="">Home</a>
+        </li>
+        <li *ngIf="(authenticationService.userData| async)" class="nav-item">
+          <a class="nav-link"  routerLink="/search">Search</a>
+        </li>
+        <li *ngIf="(authenticationService.userData| async)" class="nav-item">
+            <a class="nav-link"  routerLink="/search">Add Functions</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button *ngIf="!(authenticationService.userData| async)" class="btn btn-primary"  routerLink="/login">Sign In</button>
+        <button *ngIf="(authenticationService.userData| async)" class="btn btn-primary"  routerLink="" (click)="SignOut()">Sign Out</button>
+      </form>
     </div>
   </nav>
+
+ 
   
