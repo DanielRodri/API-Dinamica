@@ -17,6 +17,9 @@ import { environment } from '../environments/environment';
 
 /* Auth service */
 import {AuthenticationService} from './services/authentication.service';
+import { LoadComponent } from './components/load/load.component';
+import { AceEditorModule } from 'ng2-ace-editor';
+
 
 @NgModule({
   declarations: [
@@ -25,14 +28,16 @@ import {AuthenticationService} from './services/authentication.service';
     LoginComponent,
     NavbarComponent,
     RegisterComponent,
-    SearchComponent
+    SearchComponent,
+    LoadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    AceEditorModule
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

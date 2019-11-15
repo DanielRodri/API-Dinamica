@@ -1,0 +1,14 @@
+.container{
+    background:#343a40;
+    color: white;
+}
+
+.tagify__input {
+    display: block;
+    min-width: 110px;
+    margin: 5px;
+    padding: .3em .5em;
+    padding: var(--tag-pad,.3em .5em);
+    line-height: inherit;
+    position: relative;
+}
