@@ -1,21 +1,70 @@
 <div class="container mt-3"> 
-  <div class="input-group mb-3 ">
+  <form (submit)="search()">
+      <button type="button" style="margin: auto; display: block;" (click)="showAll()" class="btn btn-lg btn-primary">Show all functions</button>
+
+  <div class="input-group mb-3 mt-3">
     <div class="input-group-prepend">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search By</button>
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{searchBy}}</button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Function name</a>
-        <a class="dropdown-item" href="#">Description</a>  
-        <a class="dropdown-item" href="#">User</a>
-        <a class="dropdown-item" href="#">Tag</a>
-        <a class="dropdown-item" href="#">ID</a>    
+        <a class="dropdown-item" (click)='changeOption("Function name")'>Function name</a>
+        <a class="dropdown-item" (click)='changeOption("Description")'>Description</a>  
+        <a class="dropdown-item" (click)='changeOption("User")'>User</a>
+        <a class="dropdown-item" (click)='changeOption("Tag")'>Tag</a>  
       </div>
     </div>
-    <input type="text" class="form-control input-sm" aria-label="Text input with dropdown button" placeholder="Search..." required>
+    <input type="text" class="form-control input-sm" [(ngModel)]="searchFun" name="searchFun" aria-label="Text input with dropdown button" placeholder="Search..." required>
     <div class="input-group-btn">
-        <button class="btn btn-primary" type="submit">
+        <button class="btn btn-primary" type="submit" (click)="search()">
           <i class="fas fa-search  fa-fw"></i>
         </button>
       </div>
   </div>
+</form>
 </div> 
 
+<div class="container mt-3">
+  <div class="col">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Tags</th>
+              <th scope="col">Code</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let function of functions">
+                  <td>{{ function['userID'] }}</td>
+                  <td>{{ function['name'] }}</td>
+                  <td>{{ function['description'] }}</td>
+                  <td>{{ function['tags'] }}</td>
+                  <td><button type="button" class="btn btn-primary" data-toggle="modal" (click)="functionCode(function)" data-target="#exampleModal">
+                    Show
+                  </button></td> 
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Function</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{codeFunctions}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

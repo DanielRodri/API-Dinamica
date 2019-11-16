@@ -14,6 +14,7 @@ import { SearchComponent } from './components/search/search.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 /* Auth service */
 import {AuthenticationService} from './services/authentication.service';
@@ -37,7 +38,8 @@ import { AceEditorModule } from 'ng2-ace-editor';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FormsModule,
-    AceEditorModule
+    AceEditorModule,
+    HttpClientModule
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

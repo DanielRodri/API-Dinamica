@@ -1,24 +1,28 @@
 
 
 <div class="container mt-2">
-        <form action="/action_page.php">
+        <form (submit)="addFunction()">
         <div class="row">
           <div class="col-sm">
                 
                     <div class="form-group">
                       <label for="nameFuction">Fuction Name:</label>
-                      <input type="text" class="form-control" id="nameFuction">
+                      <input type="text" [(ngModel)]="name" name="name" class="form-control" id="nameFuction" required>
                     </div>
+                    
                     <div class="form-group">
                       <label for="description">Description:</label>
-                      <textarea class="form-control" id="description" rows="3"></textarea>
+                      <textarea class="form-control" [(ngModel)]="description" name="description" id="description" rows="3" required></textarea>
                     </div>
+
                     <div class="form-group">
                         <label for="description">Tags:</label>
-                        
+
                         
                     </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-lg btn-success mt-2">Save</button>
+
+                    
                  
           </div>
           <div class="col-sm">
@@ -26,7 +30,10 @@
                 <ace-editor #editor style="height:300px;">
                 </ace-editor>
           </div>
+          
         </div>
     </form>
 </div>
+
+
 
