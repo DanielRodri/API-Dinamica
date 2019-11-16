@@ -1,6 +1,11 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
+
 import {MatChipInputEvent} from '@angular/material/chips';
+
+import { DinamicapiService } from '../../services/dinamicapi.service'
+import {AuthenticationService} from '../../services/authentication.service';
+
 
 @Component({
   selector: 'app-load',
@@ -14,6 +19,14 @@ export class LoadComponent{
   selectable = true;
   removable = true;
   addOnBlur = true;
+  
+  private description:string;
+  private name:string;
+
+  constructor(
+    private dinamicapi:DinamicapiService,
+    public authenticationService : AuthenticationService){}
+
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   tags = [ "javascript","mvc"
   ];
@@ -64,6 +77,28 @@ export class LoadComponent{
     console.log(this.editor.value)
     console.log(eval(this.editor.value));
   }
+
+  addFunction(){
+    if(this.name==="" || this.description === "" || this.editor.value===""){
+      alert("Blank fields are not allowed")
+    }
+    else{
+      this.dinamicapi.addFunction({"userID":this.authenticationService.userName,"description":this.description,"name":this.name,"tags":["Sumar","Matematicas"],"code":this.editor.value}).subscribe(res =>{
+      var msj =res as JSON
+      if (msj['status'] ==="function added!"){ 
+          alert("Function added")
+          this.name="";
+          this.description="";
+          this.editor.value="";
+
+      }
+      else{
+        alert("something went wrong!! :(")
+      }  
+      })
+    }
+  }
+
 }
 
 /**  Copyright 2019 Google LLC. All Rights Reserved.

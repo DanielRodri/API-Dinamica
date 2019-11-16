@@ -18,8 +18,8 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button *ngIf="!(authenticationService.userData| async)" class="btn btn-primary"  routerLink="/login">Sign In</button>
-        <button *ngIf="(authenticationService.userData| async)" class="btn btn-primary"  routerLink="" (click)="SignOut()">Sign Out</button>
+        <button *ngIf="!(authenticationService.userData | async)" class="btn btn-primary"  routerLink="/login">Sign In</button>
+        <button *ngIf="(authenticationService.userData| async)" class="btn btn-primary"   (click)="SignOut()">Sign Out</button>
       </form>
     </div>
   </nav>

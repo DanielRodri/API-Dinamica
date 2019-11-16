@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
 import { AngularFireAuth } from "@angular/fire/auth";
 
@@ -14,13 +14,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.angularFireAuth.authState.subscribe(user => {
       if(user){
-        this.authenticationService.userName = user.email; 
+        var splitted = user.email.split("@", 1); 
+        this.authenticationService.userName = splitted[0];
       }
     });
   }
 
   SignOut (){
     this.authenticationService.SignOut();
+    location.href = "/"
   }
 
 }

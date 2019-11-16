@@ -14,6 +14,7 @@ import { SearchComponent } from './components/search/search.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 /* Auth service */
 import {AuthenticationService} from './services/authentication.service';
@@ -40,6 +41,7 @@ import { MaterialModule } from './components/load/material.module';
     FormsModule,
     AceEditorModule,
     MaterialModule,
+    HttpClientModule
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

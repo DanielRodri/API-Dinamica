@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
-
+import { AngularFireAuth } from "@angular/fire/auth";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,9 +8,10 @@ import {AuthenticationService} from '../../services/authentication.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public authenticationService : AuthenticationService) { }
+  constructor(public authenticationService : AuthenticationService, private angularFireAuth: AngularFireAuth) { }
 
   ngOnInit() {
+      
   }
 
 }

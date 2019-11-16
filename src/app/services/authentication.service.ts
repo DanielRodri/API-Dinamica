@@ -58,6 +58,7 @@ export class AuthenticationService {
       .auth
       .signOut();
       this.userName = "";
+      
   }   
 
 }
