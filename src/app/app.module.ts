@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import {AuthenticationService} from './services/authentication.service';
 import { LoadComponent } from './components/load/load.component';
 import { AceEditorModule } from 'ng2-ace-editor';
+import { MaterialModule } from './components/load/material.module';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { AceEditorModule } from 'ng2-ace-editor';
     NavbarComponent,
     RegisterComponent,
     SearchComponent,
-    LoadComponent
+    LoadComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ import { AceEditorModule } from 'ng2-ace-editor';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FormsModule,
-    AceEditorModule
+    AceEditorModule,
+    MaterialModule,
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

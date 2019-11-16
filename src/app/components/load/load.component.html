@@ -1,32 +1,46 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
 
 
 <div class="container mt-2">
-        <form action="/action_page.php">
-        <div class="row">
-          <div class="col-sm">
-                
-                    <div class="form-group">
-                      <label for="nameFuction">Fuction Name:</label>
-                      <input type="text" class="form-control" id="nameFuction">
-                    </div>
-                    <div class="form-group">
-                      <label for="description">Description:</label>
-                      <textarea class="form-control" id="description" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Tags:</label>
-                        
-                        
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                 
-          </div>
-          <div class="col-sm">
-                <label for="description">Code JS:</label>
-                <ace-editor #editor style="height:300px;">
-                </ace-editor>
-          </div>
-        </div>
-    </form>
+  <form action="/action_page.php">
+  <div class="row">
+    <div class="col-sm">
+      <form>
+        
+              <div class="form-group">
+                <label for="nameFuction">Fuction Name:</label>
+                <input type="text" class="form-control" id="nameFuction">
+              </div>
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
+              </div>
+              <div class="form-group row">
+                <mat-form-field class="example-chip-list">
+                  <mat-chip-list #chipList aria-label="Tag selection">
+                    <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                             [removable]="removable" (removed)="remove(tag)">
+                      {{tag}}
+                      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input
+                           [matChipInputFor]="chipList"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="add($event)">
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <hr>
+              <button type="submit" class="btn btn-success">Submit</button>
+          
+            </form>
+      </div>
+    <div class="col-sm">
+          <label for="description">Code JS:</label>
+          <ace-editor #editor style="height:300px;">
+          </ace-editor>
+    </div>
+  </div>
+</form>
 </div>
-
